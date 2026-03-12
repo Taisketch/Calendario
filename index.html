@@ -109,21 +109,28 @@
                     return claseBase;
                 };
 
-                // 1ra clase asincrónica/online (comenzando desde la segunda semana)
-                if (diasAsinc.length >= 2) clases[diasAsinc[1]] = crearClaseBase();
-
-                // Excepciones y programación para el resto del mes
-                if (month === 0) { 
-                    // Reglas especiales para Enero (month 0)
-                    if (curso === 'primerAno') {
-                        clases[16] = { tipo: 'Presencial', horario: '10:00 - 14:00 hrs' };
-                    } else {
-                        // Para segundo año se mantiene la clase original (ahora Online)
-                        clases[16] = crearClaseBase();
-                    }
+                // Programación de clases online (2da y 4ta semana por defecto)
+                if (curso === 'segundoAno' && month === 3) {
+                    // Excepción Abril Segundo Año: 1ra y 3ra semana (7 y 21)
+                    if (diasAsinc.length >= 1) clases[diasAsinc[0]] = crearClaseBase();
+                    if (diasAsinc.length >= 3) clases[diasAsinc[2]] = crearClaseBase();
                 } else {
-                    // 2da clase en el 4to día disponible (intercalado)
-                    if (diasAsinc.length >= 4) clases[diasAsinc[3]] = crearClaseBase();
+                    // 1ra clase asincrónica/online (comenzando desde la segunda semana)
+                    if (diasAsinc.length >= 2) clases[diasAsinc[1]] = crearClaseBase();
+
+                    // Excepciones y programación para el resto del mes
+                    if (month === 0) { 
+                        // Reglas especiales para Enero (month 0)
+                        if (curso === 'primerAno') {
+                            clases[16] = { tipo: 'Presencial', horario: '10:00 - 14:00 hrs' };
+                        } else {
+                            // Para segundo año se mantiene la clase original (ahora Online)
+                            clases[16] = crearClaseBase();
+                        }
+                    } else {
+                        // 2da clase en el 4to día disponible (intercalado)
+                        if (diasAsinc.length >= 4) clases[diasAsinc[3]] = crearClaseBase();
+                    }
                 }
             } else {
                 // --- Clases Online Específicas (Tercer Año) ---
