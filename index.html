@@ -110,8 +110,8 @@
                 };
 
                 // Programación de clases online (2da y 4ta semana por defecto)
-                if (curso === 'segundoAno' && month === 3) {
-                    // Excepción Abril Segundo Año: 1ra y 3ra semana (7 y 21)
+                if (curso === 'segundoAno' && (month === 3 || month === 6)) {
+                    // Excepción Abril y Julio Segundo Año: 1ra y 3ra semana (7 y 21 aprox)
                     if (diasAsinc.length >= 1) clases[diasAsinc[0]] = crearClaseBase();
                     if (diasAsinc.length >= 3) clases[diasAsinc[2]] = crearClaseBase();
                 } else {
